@@ -1,0 +1,10 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+    <file>sounds/accent_sine.wav</file>
+    <file>sounds/accent_pluck.wav</file>
+    <file>sounds/accent_bass.wav</file>
+    <file>sounds/click_sine.wav</file>
+    <file>sounds/click_pluck.wav</file>
+    <file>sounds/click_bass.wav</file>
+</qresource>
+</RCC>
