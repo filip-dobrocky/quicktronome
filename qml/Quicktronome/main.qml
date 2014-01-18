@@ -68,7 +68,6 @@ ApplicationWindow {
     property int i: 1
     property double taps: 0
     property double lastTap: 0
-    property bool isZero
     property color shapeColor: "green"
 
     // SETTINGS
@@ -85,7 +84,7 @@ ApplicationWindow {
 
     // ABOUT
     property string version: "1.0"
-    property string about: "<b>Quicktronome " + version + "</b><br><br>Quicktronome is a simple metronome app built in QtQuick. It is based on <i>uClick</i>, a metronome made using Ubuntu SDK.<br><br><b>Copyright (C) 2013 Filip Dobrocky &lt;filip.dobrocky@gmail.com&gt;</b>"
+    property string about: "<b>Quicktronome " + version + "</b><br><br>Quicktronome is a simple metronome app built in QtQuick. It is based on <i>uClick</i>, a metronome for Ubuntu Touch.<br><br><b>Copyright (C) 2013 Filip Dobrocky &lt;filip.dobrocky@gmail.com&gt;</b>"
     property string license: "This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.\n\nThis program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>."
 
     // DATABASE
@@ -463,7 +462,7 @@ ApplicationWindow {
         }
     }
 
-    Window {
+    ApplicationWindow {
         id: windowSound
         title: "Sound"
         minimumWidth: 200
@@ -659,8 +658,8 @@ ApplicationWindow {
                         millis = date.getTime() - lastTap
                         lastTap = date.getTime()
 
-                        // if the difference between taps is greater than 25 BPM, reset
-                        if (lastMillis != 0 && Math.abs(60000/(lastMillis-millis)) > 25) {
+                        // if the difference between taps is greater than 1/5, reset
+                        if (lastMillis != 0 && Math.abs(lastMillis-millis) > lastMillis/5) {
                             i = 1
                             taps = lastTap = millis = lastMillis = 0
                             return
